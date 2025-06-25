@@ -12,7 +12,7 @@ import { styled } from "@mui/system";
 
 import Navbar from "./component/navbar";
 
-function ARsummarypage() {
+function ARsummaryPage() {
   const progress = (3 / 9) * 100;
 
   const StyledLinear = styled(LinearProgress)(({}) => ({
@@ -172,4 +172,4 @@ function ARsummarypage() {
   );
 }
 
-export default ARsummarypage;
+export default ARsummaryPage;
