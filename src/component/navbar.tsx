@@ -1,21 +1,35 @@
 import { Box, Typography } from '@mui/material';
-import React from 'react';
+
 import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ClearIcon from '@mui/icons-material/Clear';
+import { useNavigate } from 'react-router-dom';
 
 interface NavbarProps {
   title: string;
+  backPath?: string;
+  status?: 'back' | 'clear'; // 'back' for arrow, 'clear' for X icon
 }
 
-function Navbar({ title }: NavbarProps) {
+function Navbar({ title, backPath, status = 'back' }: NavbarProps) {
+  const navigate = useNavigate();
+
+  const handleBack = () => {
+    if (backPath) {
+      navigate(backPath);
+    } else {
+      navigate(-1);
+    }
+  };
+
   return (
     <Box
       sx={{
-        width: "100%",
-        height: "60px",
-        display: "flex",
-        alignItems: "center",
-        backgroundColor: "#f0f0f0",
-        position: "fixed",
+        width: '100%',
+        height: '60px',
+        display: 'flex',
+        alignItems: 'center',
+        backgroundColor: '#f0f0f0',
+        position: 'fixed',
         top: 0,
         left: 0,
         zIndex: 1000,
@@ -23,28 +37,36 @@ function Navbar({ title }: NavbarProps) {
     >
       <Box
         sx={{
-          padding: "0 15px",
-          display: "flex",
-          alignItems: "center",
-          backgroundColor: "#ffffff",
-          width: "100%",
-          height: "100%",
-          position: "relative",
+          padding: '0 15px',
+          display: 'flex',
+          alignItems: 'center',
+          backgroundColor: '#ffffff',
+          width: '100%',
+          height: '100%',
+          position: 'relative',
         }}
       >
-        {/* Back icon on the left */}
-        <Box sx={{ display: "flex", alignItems: "center", cursor: "pointer" }}>
-          <ArrowBackIosIcon />
-
+        {/* Conditional Icon on the Left */}
+        <Box
+          onClick={handleBack}
+          sx={{
+            display: 'flex',
+            alignItems: 'center',
+            cursor: 'pointer',
+            position: 'absolute',
+            left: '15px',
+          }}
+        >
+          {status === 'clear' ? <ClearIcon /> : <ArrowBackIosIcon />}
         </Box>
 
-        {/* Title centered absolutely */}
+        {/* Centered Title */}
         <Typography
           sx={{
-            position: "absolute",
-            left: "50%",
-            transform: "translateX(-50%)",
-            fontWeight: "bold",
+            position: 'absolute',
+            left: '50%',
+            transform: 'translateX(-50%)',
+            fontWeight: 'bold',
           }}
         >
           {title}
