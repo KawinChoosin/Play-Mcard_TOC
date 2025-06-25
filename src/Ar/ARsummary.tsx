@@ -10,7 +10,7 @@ import {
 } from "@mui/material";
 import { styled } from "@mui/system";
 
-import Navbar from "./component/navbar";
+import Navbar from "../component/navbar";
 
 function ARsummarypage() {
   const progress = (3 / 9) * 100;

@@ -3,10 +3,10 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import App from './App'
-import ARPage from './ARPage'
+import ARPage from './Ar/AR'
 import './index.css'
-import ARsummaryPage from './ARsummaryPage'
-import StarsCollectionPage from './StarsCollectionPage'
+import ARsummaryPage from './Ar/ARsummary'
+import StarsCollectionPage from './Ar/StarsCollection'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

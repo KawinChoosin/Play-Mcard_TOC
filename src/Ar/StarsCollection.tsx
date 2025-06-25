@@ -9,7 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 
-import Navbar from "./component/navbar";
+import Navbar from "../component/navbar";
 
 function StarsCollectionPage() {
   const starData = [
