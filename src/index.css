@@ -1,0 +1,32 @@
+/* 1. Use a more intuitive box sizing model */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+/* 2. Remove default margin and padding from all elements */
+* {
+  margin: 0;
+  padding: 0;
+}
+
+/* 3. Accessible line-height and improved text rendering */
+body {
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* 4. Make media (images, videos) behave predictably */
+img, picture, video, canvas, svg {
+  display: block;
+  max-width: 100%;
+}
+
+/* 5. Let form elements inherit font styles */
+input, button, textarea, select {
+  font: inherit;
+}
+
+/* Optional: improve text wrapping */
+p, h1, h2, h3, h4, h5, h6 {
+  overflow-wrap: break-word;
+}
