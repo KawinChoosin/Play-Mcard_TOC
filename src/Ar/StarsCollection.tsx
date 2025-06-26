@@ -1,6 +1,5 @@
 import {
   Box,
-
   Card,
   CardActionArea,
   CardContent,
@@ -30,7 +29,7 @@ function StarsCollectionPage() {
         sx={{
           width: "100%",
           height: "100vh",
-        //   display: "flex",
+          //   display: "flex",
           justifyContent: "center",
           alignItems: "center",
           mt: "60px", // space under fixed navbar
@@ -38,7 +37,7 @@ function StarsCollectionPage() {
       >
         <Grid container spacing={2} sx={{ padding: 2 }}>
           {starData.map((star, index) => (
-            <Grid size={ 6 } key={index}>
+            <Grid size={6} key={index}>
               <Card>
                 <CardActionArea>
                   <CardMedia
@@ -60,7 +59,9 @@ function StarsCollectionPage() {
                       variant="body2"
                       sx={{ color: "text.secondary" }}
                     >
-                      {star.status ? "In your collection" : "Not in your collection "}
+                      {star.status
+                        ? "In your collection"
+                        : "Not in your collection "}
                     </Typography>
                   </CardContent>
                 </CardActionArea>

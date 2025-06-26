@@ -2,7 +2,6 @@ import { Box, Button, Card, Typography } from "@mui/material";
 
 import Navbar from "../component/navbar";
 
-
 function ARpage() {
   return (
     <div>

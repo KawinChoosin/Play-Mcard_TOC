@@ -15,6 +15,7 @@ import Navbar from "../component/navbar";
 function ARsummarypage() {
   const progress = (3 / 9) * 100;
 
+  // eslint-disable-next-line no-empty-pattern
   const StyledLinear = styled(LinearProgress)(({}) => ({
     height: 8,
     borderRadius: 4,
@@ -134,17 +135,18 @@ function ARsummarypage() {
             </Box>
           </Grid>
           <Grid size={12}>
-          <Stack spacing={0} p={2}>
-            <Box display="flex" justifyContent="space-between">
-              <Typography gutterBottom variant="h6" component="div">
-                Star Collection
-              </Typography>
-              <Typography gutterBottom variant="h6" component="div">
-                3/9
-              </Typography>
-            </Box>
-            <StyledLinear variant="determinate" value={progress} />
-          </Stack></Grid>
+            <Stack spacing={0} p={2}>
+              <Box display="flex" justifyContent="space-between">
+                <Typography gutterBottom variant="h6" component="div">
+                  Star Collection
+                </Typography>
+                <Typography gutterBottom variant="h6" component="div">
+                  3/9
+                </Typography>
+              </Box>
+              <StyledLinear variant="determinate" value={progress} />
+            </Stack>
+          </Grid>
           <Grid size={12}>
             <Button
               size="large"
