@@ -130,6 +130,7 @@ const GamePage: React.FC = () => {
     // In real app, this would navigate back to main menu
     console.log("Returning to Main Menu...");
     alert("Navigate back to Main Menu");
+    navigate("/menu");
   };
 
   const handleStartGame = async () => {
@@ -154,8 +155,8 @@ const GamePage: React.FC = () => {
     setShowGameInfo(true);
     // In real app, this would navigate back to main menu
     console.log("Game stopped by user");
-    alert("Game stopped - Navigate back to Main Menu");
-    navigate("/menu");
+    alert("Game ended - Navigate to summary");
+    navigate("/arsummary");
   };
 
   const handleCollectItem = async (gameObject: GameObject) => {
@@ -208,24 +209,6 @@ const GamePage: React.FC = () => {
           flexDirection: "column",
         }}
       >
-        {/* Header */}
-        <AppBar position="static" sx={{ bgcolor: "#c8e6c9" }}>
-          <Toolbar>
-            <Typography
-              variant="h6"
-              sx={{ flexGrow: 1, color: "text.primary", fontWeight: "bold" }}
-            >
-              Vendor Web APP
-            </Typography>
-            <IconButton
-              onClick={handleCloseGame}
-              sx={{ color: "text.primary" }}
-            >
-              <CloseIcon />
-            </IconButton>
-          </Toolbar>
-        </AppBar>
-
         {/* Error Display */}
         {error && (
           <Alert severity="error" sx={{ m: 2 }}>
@@ -239,13 +222,40 @@ const GamePage: React.FC = () => {
           maxWidth="sm"
           fullWidth
           PaperProps={{
-            sx: { border: 2, borderColor: "grey.800" },
+            sx: { border: 2, borderColor: "grey.800", position: "relative" },
           }}
         >
-          <DialogTitle sx={{ textAlign: "center", fontWeight: "bold" }}>
-            AR Game
-          </DialogTitle>
-          <DialogContent sx={{ pb: 3 }}>
+          <Box sx={{ position: "relative", height: 64, mb: 1 }}>
+            {/* Centered title */}
+            <DialogTitle
+              sx={{
+                position: "absolute",
+                left: 0,
+                right: 0,
+                textAlign: "center",
+                fontWeight: "bold",
+                m: 0,
+                lineHeight: "64px", // vertically center text
+              }}
+            >
+              AR Game
+            </DialogTitle>
+
+            {/* Close icon at top right */}
+            <IconButton
+              onClick={handleCloseGame}
+              sx={{
+                position: "absolute",
+                top: "50%",
+                right: 8,
+                transform: "translateY(-50%)",
+              }}
+            >
+              <CloseIcon sx={{ color: "error.main", fontSize: 32 }} />
+            </IconButton>
+          </Box>
+
+          <DialogContent sx={{ pb: 3, pt: 0 }}>
             <Box sx={{ textAlign: "center", mb: 4 }}>
               <Typography variant="h6" sx={{ fontWeight: "bold", mb: 1 }}>
                 {gameInfo.instructions[0]}
@@ -292,9 +302,20 @@ const GamePage: React.FC = () => {
 
         {/* Game Content */}
         {!showGameInfo && gameSession && (
-          <Box sx={{ flex: 1, display: "flex", flexDirection: "column" }}>
+          <Box
+            sx={{
+              height: "100vh",
+              //flex: 1,
+              //display: "flex",
+              flexDirection: "column",
+            }}
+          >
+            {/* Head Zone */}
+            <Box
+              sx={{ height: "25%", backgroundColor: "rgb(66, 7, 31)" }}
+            ></Box>
             {/* AR Camera View */}
-            <Box sx={{ flex: 1, m: 2, position: "relative" }}>
+            <Box sx={{ flex: 1, m: 2, position: "relative", height: "65%" }}>
               <Paper
                 sx={{
                   height: "100%",
@@ -403,19 +424,24 @@ const GamePage: React.FC = () => {
             <Box
               sx={{
                 p: 2,
+                height: "10vh",
                 position: "sticky",
-                left: "45%",
-                right: "45%",
+                bottom: "10%",
               }}
             >
               <Button
                 variant="contained"
                 color="error"
                 size="large"
-                fullWidth
                 startIcon={<StopIcon />}
                 onClick={handleStopGame}
-                sx={{ py: 1.5, fontWeight: "bold", borderRadius: 2 }}
+                sx={{
+                  py: 1.5,
+                  fontWeight: "bold",
+                  borderRadius: 2,
+                  left: "50%",
+                  transform: "translateX(-50%)",
+                }}
               >
                 Stop Game
               </Button>

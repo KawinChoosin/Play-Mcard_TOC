@@ -11,8 +11,10 @@ import {
 import { styled } from "@mui/system";
 
 import Navbar from "../component/navbar";
+import { useNavigate } from "react-router-dom";
 
 function ARsummarypage() {
+  const navigate = useNavigate();
   const progress = (3 / 9) * 100;
 
   // eslint-disable-next-line no-empty-pattern
@@ -25,6 +27,11 @@ function ARsummarypage() {
       backgroundColor: "#181811",
     },
   }));
+
+  const handleBackToMenu = () => {
+    alert("Navigate back to Main Menu");
+    navigate("/menu");
+  };
   return (
     <div>
       <Navbar title={"Summary"} backPath="/ar" status="clear" />
@@ -149,6 +156,7 @@ function ARsummarypage() {
           </Grid>
           <Grid size={12}>
             <Button
+              onClick={handleBackToMenu}
               size="large"
               variant="contained"
               fullWidth
