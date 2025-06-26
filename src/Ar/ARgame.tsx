@@ -6,8 +6,6 @@ import {
   Dialog,
   DialogContent,
   DialogTitle,
-  AppBar,
-  Toolbar,
   IconButton,
   Paper,
   Divider,
